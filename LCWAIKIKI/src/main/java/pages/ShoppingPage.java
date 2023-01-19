@@ -29,7 +29,7 @@ public class ShoppingPage {
     @FindBy ( xpath = "//*[@id= 'model_2673076_6371845']/div[1]/img[1]")
     WebElement onePyjama;
 
-    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[5]")
+    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[6]")
     WebElement chooseSize;
 
     @FindBy ( xpath = "//*[@id= 'pd_add_to_cart' ]")
@@ -41,8 +41,29 @@ public class ShoppingPage {
     @FindBy( xpath = "//a [ @href = 'https://www.lcwaikiki.rs/sr-RS/RS/mybag' ]")
     WebElement shoppingChart;
 
-    @FindBy ( xpath = "//*[@id= 'Cart_CompleteOrder']")
+    @FindBy ( xpath = "//*[@id = 'Cart_CompleteOrder']")
     WebElement checkOut;
+
+    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_FullName']")
+    WebElement nameOfBuyer;
+
+    @FindBy (xpath = "//*[@id = 'select2-BillingAddressViewModel_PostalCodeId-container' ]")
+    WebElement postalCodeContainer;
+
+    @FindBy ( xpath = "/html/body/span/span/span[1]/input")
+    WebElement postalCode;
+
+    @FindBy ( xpath = "//*[@id= 'select2-BillingAddressViewModel_PostalCodeId-results']/li")
+    WebElement selectPostalCode;
+
+    @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']")
+    WebElement billingAddress;
+
+    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_PhoneNumberWithCountryCode']")
+    WebElement phoneNumber;
+
+    @FindBy (xpath =  "//*[@id = 'BillingAddressViewModel_AddressDefinition']")
+    WebElement placeOfDelivery;
 
     @FindBy ( xpath = "//a[@id='btn-cargo-continue'][@class='button bc-blue center ']")
     WebElement continueOnNextStage;
@@ -84,7 +105,7 @@ public class ShoppingPage {
     }
 
     /**
-     * THIS Methods select one of products on page of LC WAIKIKI
+     * THIS Method select one of products on page of LC WAIKIKI
      */
 
     public void selectOnePyjama ( ) {
@@ -93,7 +114,7 @@ public class ShoppingPage {
     }
 
     /**
-     * THIS Methods choose size of products on page of LC WAIKIKI
+     * THIS Method chooses size of products on page of LC WAIKIKI
      */
 
     public void choseSize ( ) {
@@ -102,7 +123,7 @@ public class ShoppingPage {
     }
 
     /**
-     * THIS Methods add one of products on page of LC WAIKIKI
+     * THIS Method adds one of products on page of LC WAIKIKI
      */
 
     public void addToChart ( ) {
@@ -148,12 +169,30 @@ public class ShoppingPage {
 
     public void deliveryToHomeAddress ( ) {
 
+        nameOfBuyer.click();
+        nameOfBuyer.sendKeys(Strings.NAME_OF_BUYER);
+        postalCodeContainer.click();
+        postalCode.click();
+        postalCode.sendKeys(Strings.POSTAL_CODE);
+
+    }
+
+    /**
+     * THIS Method is continues of input data for delivery out of LC WAIKIKI
+     */
+
+    public void deliveryToHomeAddress1 ( ) {
+
+        billingAddress.sendKeys(Strings.DELIVERY_ADDRESS);
+        phoneNumber.click();
+        phoneNumber.sendKeys(Strings.PHONE_NUMBER);
+        placeOfDelivery.click();
+        placeOfDelivery.sendKeys(Strings.PLACE_OF_DELIVERY);
         continueOnNextStage.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= 'anchor-cash-on-delivery']"))).click();
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
+        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= 'anchor-cash-on-delivery']"))).click();
         acceptingGeneralConditions.click();
         procidePayment.click();
 
     }
-
 }

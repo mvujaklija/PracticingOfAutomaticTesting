@@ -3,7 +3,7 @@ package tests;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-import pages.SocialMedia;
+import pages.SocialMediaPage;
 import pages.Strings;
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * 8 User is successfully redirected to appropriate page according to the icon that is clicked
  */
 
-public class socialMediaTest extends BaseTest {
+public class SocialMediaTest extends BaseTest {
 
     @Test
 
@@ -30,15 +30,14 @@ public class socialMediaTest extends BaseTest {
 
         //Invoking Chrome driver
 
-        ChromeDriver driver = openChromeDriver();
+        ChromeDriver driver = openChromeDriver( );
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
+        JavascriptExecutor js = ( JavascriptExecutor ) driver;
+        js.executeScript( "window.scrollTo(0, document.body.scrollHeight)" );
 
         try {
 
-            driver.get(Strings.FIRST_PAGE_URL);
+            driver.get( Strings.FIRST_PAGE_URL );
 
             //Text
 
@@ -46,9 +45,9 @@ public class socialMediaTest extends BaseTest {
 
             //Test of Facebook
 
-            text( "Testing of Facebook button");
-            SocialMedia socialMedia = new SocialMedia(driver);
-            socialMedia.testFacebookButton();
+            text("Testing of Facebook button");
+            SocialMediaPage socialMedia = new SocialMediaPage( driver );
+            socialMedia.testFacebookButton( );
             ArrayList<String> tab = new ArrayList<>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             String currentURL = driver.getCurrentUrl();
@@ -58,7 +57,7 @@ public class socialMediaTest extends BaseTest {
 
             //Test of LinkedIn
 
-            text( "Testing of LinkedIn button");
+            text("Testing of LinkedIn button");
             socialMedia.testLinkedInButton();
             ArrayList<String> tab1 = new ArrayList<>(driver.getWindowHandles());
             driver.switchTo().window(tab1.get(1));
@@ -69,7 +68,7 @@ public class socialMediaTest extends BaseTest {
 
             //Test of Pinterest
 
-            text( "Testing of Pinterest button");
+            text("Testing of Pinterest button");
             socialMedia.testPinterestButton();
             ArrayList<String> tab2 = new ArrayList<>(driver.getWindowHandles());
             driver.switchTo().window(tab2.get(1));
@@ -80,7 +79,7 @@ public class socialMediaTest extends BaseTest {
 
             //Test of Instagram
 
-            text( "Testing of Instagram button");
+            text("Testing of Instagram button");
             socialMedia.testInstagramButton();
             ArrayList<String> tab3 = new ArrayList<>(driver.getWindowHandles());
             driver.switchTo().window(tab3.get(1));
@@ -88,13 +87,10 @@ public class socialMediaTest extends BaseTest {
             assert currentURL3.equals("https://www.instagram.com/lcwaikiki.serbia/") : "User is on the wrong page. " + "  Actual: " + currentURL;
             driver.close();
             driver.switchTo().window(tab.get(0));
-
-
-        } finally {
+        }
+        finally {
 
             driver.quit();
-
         }
-
     }
 }

@@ -6,14 +6,15 @@ import pages.LoginPage;
 import pages.Strings;
 
 /**
- * TEST FOR SIGNUP TO LC WAIKIKI
+ * TEST FOR LOGIN TO LC WAIKIKI
  * Steps
  * 1. Navigate to a first page of LC WAIKIKI
  * 2. On first page hover mouse over profile icon in top right corner (it is look like little person) to get dropdown menu
  * 3. In the dropdown menu click on the option PRIJAVA
  * 4. Click on enter email field and enter email
  * 5. Click on the enter password field and enter password
- * 6. Click on the button Prijava
+ * 6. Confirm that you are not a robot
+ * 7. Click on the button Prijava
   * <p>
  * Expected results
  * 8 User is successfully logged in to account and can go to start shopping
