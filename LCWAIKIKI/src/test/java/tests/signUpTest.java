@@ -4,7 +4,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import pages.SignupPage;
 import pages.Strings;
-import java.util.concurrent.TimeUnit;
+
+/* This is semiautomatic test because code for verification is coming over mobile phone and phone number can be used just once and code must be entered manually*/
+
 
 /**
  * TEST FOR SIGNUP TO LC WAIKIKI
@@ -28,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  * 8 User is successfully registered and can go to start shopping by click on button
  */
 
-public class signUpTest extends BaseTest {
+public class SignUpTest extends BaseTest {
 
     @Test
 
@@ -46,6 +48,7 @@ public class signUpTest extends BaseTest {
 
             text("Clicking on the profile icon and redirecting to signup page of the LC WAIKIKI");
 
+            sleep();
             SignupPage signupPage = new SignupPage( driver );
             signupPage.choseProfileIcon( );
 
@@ -79,22 +82,31 @@ public class signUpTest extends BaseTest {
             sleep();
 
             text("Click on the checkbox of reCAPTCHA  of LC WAIKIKI page");
+
             signupPage.notABot( );
+            sleep();
 
             text("Click on the button Otvorite nalog");
+
             signupPage.confirmRegistrationButton( );
 
-
             text( "Input verification code that you get over mobile that you provide to LC WAIKIKI ");
+
             signupPage.verificationCodeBox( );
 
             text( "Confirmation of verification code and finishing registration");
-            driver.manage( ).timeouts( ).implicitlyWait(20, TimeUnit.SECONDS);
+            sleepForCode();
+
             signupPage.verificationCodeConfirm( );
+
+            text("Assertion that user is successfully open new account on LC WAIKIKI page");
+            String currentURL2 = driver.getCurrentUrl();
+            assert currentURL2.equals( Strings.URL_FOR_CONFIRMATION_OF_REGISTRATION ) : "User is on the wrong page. " + "  Actual: " + currentURL;
+
         }
         finally
         {
-            //driver.quit();
+            driver.quit( );
         }
     }
 }

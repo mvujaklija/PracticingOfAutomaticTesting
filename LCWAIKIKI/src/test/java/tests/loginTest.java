@@ -16,10 +16,10 @@ import pages.Strings;
  * 6. Click on the button Prijava
   * <p>
  * Expected results
- * 8 User is successfully loged in to acount and can go to start shopping
+ * 8 User is successfully logged in to account and can go to start shopping
  */
 
-public class loginTest extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @Test
 
@@ -38,28 +38,30 @@ public class loginTest extends BaseTest {
             //Test of Login
 
             text("Select profile icon");
-            LoginPage loginPage = new LoginPage(driver);
-            loginPage.choseProfileIcon();
+            LoginPage loginPage = new LoginPage( driver );
+            loginPage.choseProfileIcon( );
 
             //Test of entering data and sign in on the page LC WAIKIKI
 
             text("Click on the option PRIJAVA");
             loginPage.choseSignInButton();
-            String currentURL = driver.getCurrentUrl();
+            String currentURL = driver.getCurrentUrl( );
             assert currentURL.equals(Strings.LOGIN_PAGE_URL) : "User is on the wrong page. " + "  Actual: " + currentURL;
 
             text("Input email, password and login to LC WAIKIKI page");
-            loginPage.loginUser(Strings.EMAIL_FOR_SIGNIN, Strings.PASSWORD_FOR_SIGNIN);
-            String currentURL1 = driver.getCurrentUrl();
+            loginPage.inputEmail( );
+            sleep( );
+            loginPage.inputPassword( );
+            sleep( );
+            loginPage.notABot( );
+            sleep( );
+            loginPage.signIn( );
+            String currentURL1 = driver.getCurrentUrl( );
             assert currentURL1.equals(Strings.MAIN_PAGE_URL) : "User is on the wrong page. " + "  Actual: " + currentURL;
-
         }
         finally {
 
-            //driver.quit();
-
+            driver.quit( );
         }
-
     }
-
 }

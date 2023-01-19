@@ -14,38 +14,35 @@ public class SignupPage {
 
     //Looking for web elements
 
-    @FindBy( xpath = "//i[@class = 'header-profile-icon']")
+    @FindBy( xpath = "//i[@class = 'header-profile-icon']" )
     WebElement profileIcon;
 
-    @FindBy( xpath = "//a[@href ='https://www.lcwaikiki.rs/sr-RS/RS/register']")
+    @FindBy( xpath = "//a[@href ='https://www.lcwaikiki.rs/sr-RS/RS/register']" )
     WebElement signUpButton;
 
-    @FindBy ( xpath = "//input[@id = 'RegisterFormView_RegisterEmail']")
+    @FindBy ( xpath = "//input[@id = 'RegisterFormView_RegisterEmail']" )
     WebElement inputEmail;
 
-    @FindBy ( xpath = "//input[@id = 'RegisterFormView_Password']")
+    @FindBy ( xpath = "//input[@id = 'RegisterFormView_Password']" )
     WebElement inputPassword;
 
-    @FindBy ( xpath = "//input[@id = 'RegisterPhoneNumberTR']")
+    @FindBy ( xpath = "//input[@id = 'RegisterPhoneNumberTR']" )
     WebElement inputPhoneNumber;
 
-    @FindBy ( xpath =  "//*[@id='RegisterFormView_IsSmsChecked']/following-sibling::ins")
+    @FindBy ( xpath =  "//*[@id='RegisterFormView_IsSmsChecked']/following-sibling::ins" )
     WebElement smsCheckBox;
 
-    @FindBy ( xpath = "//div[@class='input-checkbox'] //div[@class='icheckbox']")
+    @FindBy ( xpath = "//div[@class='input-checkbox'] //div[@class='icheckbox']" )
     WebElement generalConditionsCheckBox;
 
-    @FindBy ( css = "//a[@class='button bc-blue register-button-link submit-button sign-up']")
+    @FindBy ( css = ".button.bc-blue.register-button-link.submit-button.sign-up" )
     WebElement openAccount;
 
-    @FindBy ( xpath = "//span/following-sibling::input[@id='RegisterFormView_ActivationCode']")
+    @FindBy ( xpath = "//span/following-sibling::input[@id='RegisterFormView_ActivationCode']" )
     WebElement smsCodeBox;
 
-    @FindBy ( xpath = "//script/following-sibling::a[@class='button bc-blue register-button-link submit-button']")
+    @FindBy ( xpath = "//script/following-sibling::a[@class='button bc-blue register-button-link submit-button']" )
     WebElement confirmVerificationCode;
-
-    @FindBy( xpath = "//p[@class = 'urs-first']")
-    WebElement headerText;
 
     //Invoking Chrome driver
 
@@ -63,7 +60,7 @@ public class SignupPage {
     //Methods
 
     /**
-     * THIS Method is used for slowdown send keys method on Booking.com page
+     * THIS Method is used for slowdown send keys method on page of LC WAIKIKI
      */
 
     public void sleepSendKeys( ) {
@@ -81,10 +78,8 @@ public class SignupPage {
 
     public void choseProfileIcon( ) {
 
-        assert profileIcon.isDisplayed( ) : "Profile icon is not present. Expected to be there";
-
-        Actions action = new Actions(driver);
-        action.moveToElement(profileIcon).perform();
+        Actions action = new Actions( driver );
+        action.moveToElement( profileIcon ).perform( );
     }
 
     /**
@@ -140,16 +135,16 @@ public class SignupPage {
 
     public void inputPhoneNumber( ) {
 
-        inputPhoneNumber.click();
+        inputPhoneNumber.click( );
 
-        String phone = Strings.PHONE_NUMBER;
+        String phone = Strings.PHONE_NUMBER_FOR_SIGNUP;
         for (int i = 0; i < phone.length( ); i++) {
 
             char c = phone.charAt(i);
-            String s = new StringBuilder().append(c).toString();
+            String s = new StringBuilder ().append( c ).toString( );
 
-            inputPhoneNumber.sendKeys(s);
-            sleepSendKeys();
+            inputPhoneNumber.sendKeys( s );
+            sleepSendKeys( );
         }
     }
 
@@ -169,7 +164,6 @@ public class SignupPage {
     public void generalConditionsCheckBox( ) {
 
         generalConditionsCheckBox.click( );
-
     }
 
     /**
@@ -190,7 +184,7 @@ public class SignupPage {
 
     public void confirmRegistrationButton( ) {
 
-        openAccount.click();
+        openAccount.click( );
     }
 
     /**
@@ -200,7 +194,6 @@ public class SignupPage {
     public void verificationCodeBox( ) {
 
         smsCodeBox.sendKeys( Strings.VERIFICATION_CODE );
-
     }
 
     /**
@@ -211,6 +204,4 @@ public class SignupPage {
 
         confirmVerificationCode.click();
     }
-
-
 }

@@ -3,7 +3,6 @@ package tests;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-
 public class BaseTest {
 
     public ChromeDriver openChromeDriver() {
@@ -23,7 +22,7 @@ public class BaseTest {
 
     public void sleep() {
         try {
-            Thread.sleep(4000);
+            Thread.sleep(2000);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
