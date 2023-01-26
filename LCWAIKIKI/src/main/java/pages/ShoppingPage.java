@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -14,65 +15,62 @@ public class ShoppingPage {
 
     //Looking for web elements
 
-    @FindBy( xpath = "//i [ @class = 'header-profile-icon bndl-user-icon bndl-user-icon-dims' ]" )
-    WebElement profileIcon;
-
-    @FindBy(xpath = "//a[@class='header-logo img-logo logo-center']")
-    WebElement headerLogo;
-
-    @FindBy ( xpath =  "//a[@id='mega_menu_dd_9'][@class='dropdown-toggle dropdown-toggle ']")
+    @FindBy ( xpath =  "//a[@id='mega_menu_dd_9'][@class='dropdown-toggle dropdown-toggle ']" )
     WebElement kids;
 
-    @FindBy ( xpath =  "//a[ @href ='/sr-RS/RS/category/boys/pyjamas-c104']")
+    @FindBy ( xpath =  "//a[@href ='/sr-RS/RS/category/boys/pyjamas-c104']" )
     WebElement pyjamas;
 
-    @FindBy ( xpath = "//*[@id= 'model_2673076_6371845']/div[1]/img[1]")
+    @FindBy ( xpath = "//*[@id= 'model_2673076_6371845']/div[1]/img[1]" )
     WebElement onePyjama;
 
-    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[6]")
+    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[8]" )
     WebElement chooseSize;
 
-    @FindBy ( xpath = "//*[@id= 'pd_add_to_cart' ]")
+    @FindBy ( xpath = "//*[@id= 'pd_add_to_cart' ]" )
     WebElement addToChart;
 
-    @FindBy ( xpath = "//span[@class='spanCart cart-item-count header-cart-quantity']")
+    @FindBy ( xpath = "//span[@class='spanCart cart-item-count header-cart-quantity']" )
     WebElement shoppingChartBadge;
 
-    @FindBy( xpath = "//a [ @href = 'https://www.lcwaikiki.rs/sr-RS/RS/mybag' ]")
+    @FindBy( xpath = "//a [ @href = 'https://www.lcwaikiki.rs/sr-RS/RS/mybag' ]" )
     WebElement shoppingChart;
 
-    @FindBy ( xpath = "//*[@id = 'Cart_CompleteOrder']")
+    @FindBy ( xpath = "//*[@id = 'Cart_CompleteOrder']" )
     WebElement checkOut;
 
-    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_FullName']")
+    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_FullName']" )
     WebElement nameOfBuyer;
 
-    @FindBy (xpath = "//*[@id = 'select2-BillingAddressViewModel_PostalCodeId-container' ]")
+    @FindBy (xpath = "//*[@id = 'select2-BillingAddressViewModel_PostalCodeId-container' ]" )
     WebElement postalCodeContainer;
 
-    @FindBy ( xpath = "/html/body/span/span/span[1]/input")
+    @FindBy ( xpath = "/html/body/span/span/span[1]/input" )
     WebElement postalCode;
 
-    @FindBy ( xpath = "//*[@id= 'select2-BillingAddressViewModel_PostalCodeId-results']/li")
+    @FindBy ( xpath = "//*[@id='select2-BillingAddressViewModel_PostalCodeId-results']/li" )
     WebElement selectPostalCode;
 
-    @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']")
+    @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']" )
     WebElement billingAddress;
 
-    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_PhoneNumberWithCountryCode']")
+    @FindBy ( xpath = "//*[@id = 'BillingAddressViewModel_PhoneNumberWithCountryCode']" )
     WebElement phoneNumber;
 
-    @FindBy (xpath =  "//*[@id = 'BillingAddressViewModel_AddressDefinition']")
+    @FindBy (xpath =  "//*[@id = 'BillingAddressViewModel_AddressDefinition']" )
     WebElement placeOfDelivery;
 
-    @FindBy ( xpath = "//a[@id='btn-cargo-continue'][@class='button bc-blue center ']")
+    @FindBy ( xpath = "//a[@id='btn-cargo-continue'][@class='button bc-blue center ']" )
     WebElement continueOnNextStage;
 
-    @FindBy ( xpath = "//*[@id= 'rudiments-contract-cashondelivery']/div[1]/label/div/ins")
+    @FindBy ( xpath = "//*[@id= 'rudiments-contract-cashondelivery']/div[1]/label/div/ins" )
     WebElement acceptingGeneralConditions;
 
-    @FindBy ( xpath = "//*[@id = 'btn-cash-on-delivery-payment-confirm']")
+    @FindBy ( xpath = "//*[@id = 'btn-cash-on-delivery-payment-confirm']" )
     WebElement procidePayment;
+
+    @FindBy( xpath = "//*[@id='order-success-creditcard']/div[2]/text()" )
+    WebElement textOfOrder;
 
     //Invoking Chrome driver
 
@@ -80,14 +78,27 @@ public class ShoppingPage {
 
     //Constructor
 
-    public ShoppingPage(ChromeDriver driver) {
+    public ShoppingPage( ChromeDriver driver) {
 
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements( driver, this );
 
     }
 
     //Methods
+
+
+    /**
+     * THIS Method is used for slowdown on page of LC WAIKIKI
+     */
+
+    public void sleep( ) {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     /**
      * THIS Method select section DECA/DEČACI/Pidžame on main page of LC WAIKIKI
@@ -97,11 +108,10 @@ public class ShoppingPage {
 
 
         Actions action = new Actions( driver );
-        action.moveToElement( kids ).perform();
+        action.moveToElement( kids ).perform( );
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id = 'menu_9' ]/div/div/div[1]/div[2]/div[1]"))).click();
-        pyjamas.click();
-
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id = 'menu_9' ]/div/div/div[1]/div[2]/div[1]"))).click( );
+        pyjamas.click( );
     }
 
     /**
@@ -110,7 +120,7 @@ public class ShoppingPage {
 
     public void selectOnePyjama ( ) {
 
-        onePyjama.click();
+        onePyjama.click( );
     }
 
     /**
@@ -119,7 +129,7 @@ public class ShoppingPage {
 
     public void choseSize ( ) {
 
-        chooseSize.click();
+        chooseSize.click( );
     }
 
     /**
@@ -128,7 +138,7 @@ public class ShoppingPage {
 
     public void addToChart ( ) {
 
-        addToChart.click();
+        addToChart.click( );
     }
 
     /**
@@ -149,7 +159,7 @@ public class ShoppingPage {
 
     public void shoppingChart ( ) {
 
-        shoppingChart.click();
+        shoppingChart.click( );
 
     }
 
@@ -159,7 +169,7 @@ public class ShoppingPage {
 
     public void checkOut ( ) {
 
-        checkOut.click();
+        checkOut.click( );
 
     }
 
@@ -169,30 +179,32 @@ public class ShoppingPage {
 
     public void deliveryToHomeAddress ( ) {
 
-        nameOfBuyer.click();
+        nameOfBuyer.click( );
         nameOfBuyer.sendKeys(Strings.NAME_OF_BUYER);
-        postalCodeContainer.click();
-        postalCode.click();
+        postalCodeContainer.click( );
+        postalCode.click( );
         postalCode.sendKeys(Strings.POSTAL_CODE);
-
+        sleep();
+        postalCode.sendKeys(Keys.ENTER);
+        billingAddress.sendKeys(Strings.DELIVERY_ADDRESS);
+        phoneNumber.click( );
+        phoneNumber.sendKeys(Strings.PHONE_NUMBER);
+        placeOfDelivery.click( );
+        placeOfDelivery.sendKeys(Strings.PLACE_OF_DELIVERY);
+        continueOnNextStage.click( );
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
+        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= 'anchor-cash-on-delivery']"))).click( );
+        acceptingGeneralConditions.click( );
+        procidePayment.click( );
     }
 
     /**
-     * THIS Method is continues of input data for delivery out of LC WAIKIKI
+     * THIS Method is used for assertion of successful order on LC WAIKIKI page
      */
 
-    public void deliveryToHomeAddress1 ( ) {
+    public void assertMethod ( ) {
 
-        billingAddress.sendKeys(Strings.DELIVERY_ADDRESS);
-        phoneNumber.click();
-        phoneNumber.sendKeys(Strings.PHONE_NUMBER);
-        placeOfDelivery.click();
-        placeOfDelivery.sendKeys(Strings.PLACE_OF_DELIVERY);
-        continueOnNextStage.click();
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
-        wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= 'anchor-cash-on-delivery']"))).click();
-        acceptingGeneralConditions.click();
-        procidePayment.click();
-
+        driver.get(String.valueOf(textOfOrder));
+        assert textOfOrder.equals(Strings.ORDER_COMPLETE) : "Wrong text. " + "Expected: " + Strings.ORDER_COMPLETE + "Actual: " + textOfOrder;
     }
 }

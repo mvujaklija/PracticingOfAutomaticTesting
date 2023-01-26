@@ -5,12 +5,10 @@ public class Strings {
     //URL-s
 
     public static final String FIRST_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS?gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGEsAYEhYhQKpt7kFgR7N6e-1Ex6iKEqeH9yRdCcRlHLfTqrInVzLY8aAp95EALw_wcB";
-
     public static final String LOGIN_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS/login";
-
     public static final String MAIN_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS";
     public static final String REGISTER_PAGE_URL = "https://www.lcwaikiki.rs/sr-RS/RS/register";
-
+    public static final String CASH_ON_DELIVERY_URL = "https://www.lcwaikiki.rs/sr-RS/RS/order#onaycashondelivery";
     public static final String URL_FOR_CONFIRMATION_OF_REGISTRATION = "https://www.lcwaikiki.rs/sr-RS/RS?gclid=Cj0KCQiA-oqdBhDfARIsAO0TrGEsAYEhYhQKpt7kFgR7N6e-1Ex6iKEqeH9yRdCcRlHLfTqrInVzLY8aAp95EALw_wcB";
 
     //Iframe URL-s
@@ -33,12 +31,14 @@ public class Strings {
 
     public static final String TRY_FOR_SEARCH_BAR = "decaci pidzame";
 
+    public static final String ORDER_COMPLETE = "Vaša porudžbina je primljena";
+
     //Delivery data
 
-    public static final String NAME_OF_BUYER = "Milan Vujaklija";
+    public static final String NAME_OF_BUYER = "Marko Brankovic";
     public static final String POSTAL_CODE = "11273";
-    public static final String DELIVERY_ADDRESS = "Braće Smiljanić 81/5, Zemun, Batajnica";
-    public static final String PHONE_NUMBER = "635616668";
+    public static final String DELIVERY_ADDRESS = "Dalmatinske Zagore 21 Batajnica ";
+    public static final String PHONE_NUMBER = "62561666";
     public static final String PLACE_OF_DELIVERY = "Stan";
 
 

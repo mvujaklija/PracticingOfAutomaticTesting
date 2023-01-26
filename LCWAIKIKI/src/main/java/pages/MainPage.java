@@ -48,10 +48,10 @@ public class MainPage {
 
     //Constructor
 
-    public MainPage(ChromeDriver driver) {
+    public MainPage( ChromeDriver driver ) {
 
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements( driver, this );
 
     }
 
@@ -61,14 +61,14 @@ public class MainPage {
      * THIS Method select section DECA/DEČACI/Pidžame on main page of LC WAIKIKI
      */
 
-    public void selectSectionKids() {
+    public void selectSectionKids( ) {
 
 
-        Actions action = new Actions(driver);
-        action.moveToElement(kids).perform();
+        Actions action = new Actions( driver );
+        action.moveToElement(kids).perform( );
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id = 'menu_9' ]/div/div/div[1]/div[2]/div[1]"))).click();
-        pyjamas.click();
+        pyjamas.click( );
 
     }
 
@@ -76,26 +76,26 @@ public class MainPage {
      * THIS Methods test functionality of favorites and head logo on page of LC WAIKIKI
      */
 
-    public void selectOnePyjama() {
+    public void selectOnePyjama( ) {
 
-        onePyjama.click();
+        onePyjama.click( );
     }
 
-    public void addToFavorites() {
+    public void addToFavorites( ) {
 
-        addToFavorites.click();
-
-    }
-
-    public void favoriteIcon() {
-
-        favoriteIcon.click();
+        addToFavorites.click( );
 
     }
 
-    public void headerLogo() {
+    public void favoriteIcon( ) {
 
-        headerLogo.click();
+        favoriteIcon.click( );
+
+    }
+
+    public void headerLogo( ) {
+
+        headerLogo.click( );
 
     }
 
@@ -103,11 +103,11 @@ public class MainPage {
      * THIS Method test functionality of search bar  on page of LC WAIKIKI
      */
 
-    public void searchBarTest() {
+    public void searchBarTest( ) {
 
-        searchBarInput.click();
+        searchBarInput.click( );
         searchBarInput.sendKeys(Strings.TRY_FOR_SEARCH_BAR);
-        searchButton.click();
+        searchButton.click( );
 
     }
 

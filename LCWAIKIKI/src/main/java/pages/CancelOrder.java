@@ -11,13 +11,13 @@ public class CancelOrder {
     @FindBy( xpath = "//i[@class = 'header-profile-icon bndl-user-icon bndl-user-icon-dims']" )
     WebElement profileIcon;
 
-    @FindBy ( xpath = "//ul[@class='dropdown-menu'] //a[normalize-space()='Moje porudžbine'] ")
+    @FindBy ( xpath = "//ul[@class='dropdown-menu'] //a[normalize-space()='Moje porudžbine'] " )
     WebElement myOrders;
 
-    @FindBy ( xpath = "//a[@id='Ro-Responsive-OrderList2'][normalize-space()='\uF027 Otkaži porudžbinu']")
+    @FindBy ( xpath = "//a[@id='Ro-Responsive-OrderList2'][normalize-space()='\uF027 Otkaži porudžbinu']" )
     WebElement cancelOrder;
 
-    @FindBy( xpath = "//a[ @id = 'modalSaveChangesYesBtn']")
+    @FindBy( xpath = "//a[@id = 'modalSaveChangesYesBtn']")
     WebElement cancelOrderButton;
 
 
