@@ -24,7 +24,7 @@ public class ShoppingPage {
     @FindBy ( xpath = "//*[@id= 'model_2673076_6371845']/div[1]/img[1]" )
     WebElement onePyjama;
 
-    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[8]" )
+    @FindBy ( xpath = "//*[@id = 'option-size' ]/a[6]" )
     WebElement chooseSize;
 
     @FindBy ( xpath = "//*[@id= 'pd_add_to_cart' ]" )
@@ -48,9 +48,6 @@ public class ShoppingPage {
     @FindBy ( xpath = "/html/body/span/span/span[1]/input" )
     WebElement postalCode;
 
-    @FindBy ( xpath = "//*[@id='select2-BillingAddressViewModel_PostalCodeId-results']/li" )
-    WebElement selectPostalCode;
-
     @FindBy ( xpath = "//textarea[@name='BillingAddressViewModel.Address'][@class='ym-disable-keys']" )
     WebElement billingAddress;
 
@@ -69,8 +66,11 @@ public class ShoppingPage {
     @FindBy ( xpath = "//*[@id = 'btn-cash-on-delivery-payment-confirm']" )
     WebElement procidePayment;
 
-    @FindBy( xpath = "//*[@id='order-success-creditcard']/div[2]/text()" )
-    WebElement textOfOrder;
+    @FindBy( xpath = "//*[@id = 'order-success-creditcard']/div[9]/div[4]/div/ul/li/a/div/i" )
+    WebElement orderDetails;
+
+    @FindBy ( xpath = "//*[@id= 'RO-consignment']/div[7]/div[1]/a/img")
+    WebElement asertOfSuccessfulPurchase;
 
     //Invoking Chrome driver
 
@@ -194,8 +194,11 @@ public class ShoppingPage {
         continueOnNextStage.click( );
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds( 10 ) );
         wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id= 'anchor-cash-on-delivery']"))).click( );
+        sleep();
         acceptingGeneralConditions.click( );
         procidePayment.click( );
+        sleep();
+        orderDetails.click();
     }
 
     /**
@@ -204,7 +207,6 @@ public class ShoppingPage {
 
     public void assertMethod ( ) {
 
-        driver.get(String.valueOf(textOfOrder));
-        assert textOfOrder.equals(Strings.ORDER_COMPLETE) : "Wrong text. " + "Expected: " + Strings.ORDER_COMPLETE + "Actual: " + textOfOrder;
+        asertOfSuccessfulPurchase.isDisplayed();
     }
 }

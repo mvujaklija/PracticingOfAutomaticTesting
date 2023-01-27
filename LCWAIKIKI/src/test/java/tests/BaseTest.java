@@ -28,6 +28,14 @@ public class BaseTest {
         }
     }
 
+    public void longsleep( ) {
+        try {
+            Thread.sleep(10000);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void sleepForCode ( ) {
         try {
             Thread.sleep(60000);

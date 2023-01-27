@@ -69,12 +69,13 @@ public class BuyOneItem extends BaseTest{
                 shoppingPage.checkOut( );
                 sleep( );
                 shoppingPage.deliveryToHomeAddress( );
+                longsleep();
                 shoppingPage.assertMethod();
 
             }
             finally {
 
-                //driver.quit();
+                driver.quit();
 
             }
 
